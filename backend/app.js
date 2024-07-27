@@ -8,6 +8,8 @@ import { errorMiddleware } from "./middlewares/error.js";
 import messageRouter from "./routes/messageRoutes.js";
 import userRouter from "./routes/userRoutes.js";
 import timelineRouter from "./routes/timelineRoutes.js";
+import softwareApplicationRouter from "./routes/softwareApplicationRoutes.js";
+import skillRouter from "./routes/skillRoutes.js";
 
 const app = express();
 dotenv.config({ path: "./config/config.env" });
@@ -34,10 +36,10 @@ app.use(
 app.use("/api/v1/message", messageRouter);
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/timeline", timelineRouter);
+app.use("/api/v1/softwareapplication", softwareApplicationRouter);
+app.use("/api/v1/skill", skillRouter);
 
 dbConnection();
 app.use(errorMiddleware);
 
 export default app;
-
-//3:38:32
