@@ -1,36 +1,18 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import Login from "./pages/Login";
 import HomePage from "./pages/HomePage";
 import ManageSkills from "./pages/ManageSkills";
 import ManageProjects from "./pages/ManageProjects";
 import UpdateProject from "./pages/UpdateProject";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { getUser } from "./store/slices/userSlice";
+import ManageTimeline from "./pages/ManageTimeline";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
-import { getAllSkills } from "./store/slices/skillSlice";
-import { getAllSoftwareApplications } from "./store/slices/softwareApplicationSlice";
-import { getAllTimeline } from "./store/slices/timelineSlice";
-import { getAllMessages } from "./store/slices/messageSlice";
-import ManageTimeline from "./pages/ManageTimeline";
-import { getAllProjects } from "./store/slices/projectSlice";
 import ViewProject from "./pages/ViewProject";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getUser());
-    dispatch(getAllSkills());
-    dispatch(getAllSoftwareApplications());
-    dispatch(getAllTimeline());
-    dispatch(getAllMessages());
-    dispatch(getAllProjects());
-  }, []);
+const App = () => {
   return (
     <Router>
       <Routes>
@@ -47,6 +29,6 @@ function App() {
       <ToastContainer position="bottom-right" theme="dark" />
     </Router>
   );
-}
+};
 
 export default App;
