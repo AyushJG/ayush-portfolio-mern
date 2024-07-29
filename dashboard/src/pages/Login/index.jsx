@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { clearAllUserErrors, login } from "@/store/slices/userSlice";
 import { toast } from "react-toastify";
-import SpecialLoadingButton from "./sub-components/SpecialLoadingButton";
+import SpecialLoadingButton from "../components/SpecialLoadingButton";
 
 const Login = () => {
   const [email, setEmail] = useState("");

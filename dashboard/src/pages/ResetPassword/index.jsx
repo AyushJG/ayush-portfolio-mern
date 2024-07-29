@@ -1,16 +1,22 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { clearAllUserErrors } from "@/store/slices/userSlice";
-import { forgotPassword } from "@/store/slices/resetPasswordSlice";
-import { toast } from "react-toastify";
-import SpecialLoadingButton from "./sub-components/SpecialLoadingButton";
+import {
+  resetPassword,
+  clearAllForgotResetPassErrors,
+} from "@/store/slices/resetPasswordSlice";
+import { getUser } from "@/store/slices/userSlice";
 
-const ForgotPassword = () => {
-  const [email, setEmail] = useState("");
+import { toast } from "react-toastify";
+import SpecialLoadingButton from "../components/SpecialLoadingButton";
+
+const Login = () => {
+  const { token } = useParams();
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const { loading, error, message } = useSelector(
     (state) => state.forgotPassword
   );
@@ -18,20 +24,21 @@ const ForgotPassword = () => {
   const dispatch = useDispatch();
   const navigateTo = useNavigate();
 
-  const handleForgotPassword = (email) => {
-    dispatch(forgotPassword(email));
+  const handleResetPassword = (password, confirmPassword) => {
+    dispatch(resetPassword(token, password, confirmPassword));
   };
 
   useEffect(() => {
     if (error) {
       toast.error(error);
-      dispatch(clearAllUserErrors());
+      dispatch(clearAllForgotResetPassErrors());
     }
     if (isAuthenticated) {
       navigateTo("/");
     }
     if (message !== null) {
       toast.success(message);
+      dispatch(getUser());
     }
   }, [dispatch, isAuthenticated, error, loading]);
 
@@ -40,51 +47,48 @@ const ForgotPassword = () => {
       <div className=" min-h-[100vh] flex items-center justify-center py-12">
         <div className="mx-auto grid w-[350px] gap-6">
           <div className="grid gap-2 text-center">
-            <h1 className="text-3xl font-bold">Forgot Password</h1>
+            <h1 className="text-3xl font-bold">Reset Password</h1>
             <p className="text-balance text-muted-foreground">
-              Enter your email to request for reset password
+              Set a new password
             </p>
           </div>
           <div className="grid gap-4">
             <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
+              <Label>Password</Label>
               <Input
-                id="email"
-                type="email"
-                placeholder="m@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <div className="grid gap-2">
               <div className="flex items-center">
-                <Link
-                  to="/login"
-                  className="ml-auto inline-block text-sm underline"
-                >
-                  Remember your password?
-                </Link>
+                <Label htmlFor="password">Confirm Password</Label>
               </div>
+              <Input
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
             </div>
             {!loading ? (
               <Button
-                onClick={() => handleForgotPassword(email)}
+                onClick={() => handleResetPassword(password, confirmPassword)}
                 className="w-full"
               >
-                Forgot Password
+                Reset Password
               </Button>
             ) : (
-              <SpecialLoadingButton content={"Requesting"} />
+              <SpecialLoadingButton content={"Resetting Your Password"} />
             )}
           </div>
         </div>
       </div>
       <div className="flex justify-center items-center bg-muted">
-        <img src="/forgot.png" alt="login" />
+        <img src="/reset.png" alt="login" />
       </div>
     </div>
   );
 };
 
-export default ForgotPassword;
+export default Login;
