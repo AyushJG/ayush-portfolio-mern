@@ -11,8 +11,15 @@ import ResetPassword from "./pages/ResetPassword";
 import ViewProject from "./pages/ViewProject";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { getUser } from "./store/slices/userSlice";
 
 const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUser());
+  }, []);
   return (
     <Router>
       <Routes>

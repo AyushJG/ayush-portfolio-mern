@@ -19,7 +19,7 @@ app.use(
   cors({
     origin: [process.env.PORTFOLIO_URL, process.env.DASHBOARD_URL],
     methods: ["GET", "POST", "DELETE", "PUT"],
-    credentials: "true",
+    credentials: true,
   })
 );
 
@@ -45,4 +45,3 @@ dbConnection();
 app.use(errorMiddleware);
 
 export default app;
-//4:26:25
