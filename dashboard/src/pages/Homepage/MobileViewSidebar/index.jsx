@@ -68,14 +68,14 @@ const MobileViewSidebar = ({ user, active, setActive, handleLogout }) => {
             </Link>
             <Link
               className={`flex items-center gap-4 px-2.5 ${
-                active === "Add Uses"
+                active === "Add Application"
                   ? "text-foreground"
                   : "text-muted-foreground hover:text-foreground "
               }`}
-              onClick={() => setActive("Add Uses")}
+              onClick={() => setActive("Add Application")}
             >
               <LayoutGrid className="h-5 w-5" />
-              Add Uses
+              Add Application
             </Link>
             <Link
               className={`flex items-center gap-4 px-2.5 ${
@@ -94,7 +94,7 @@ const MobileViewSidebar = ({ user, active, setActive, handleLogout }) => {
                   ? "text-foreground"
                   : "text-muted-foreground hover:text-foreground "
               }`}
-              onClick={() => setActive("Timeline")}
+              onClick={() => setActive("Add Timeline")}
             >
               <History className="h-5 w-5" />
               Timeline

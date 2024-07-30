@@ -43,7 +43,7 @@ export const deleteSkill = catchAsyncErrors(async (req, res, next) => {
   if (!skill) {
     return next(new ErrorHandler("Skill not found!", 404));
   }
-  console.log({ skill });
+
   const skillSvgId = skill.svg.public_id;
   await cloudinary.uploader.destroy(skillSvgId);
   await skill.deleteOne();

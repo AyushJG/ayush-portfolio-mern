@@ -15,11 +15,21 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getUser } from "./store/slices/userSlice";
 import DashboardProvider from "./context/provider";
+import { getAllMessages } from "./store/slices/messageSlice";
+import { getAllTimeline } from "./store/slices/timelineSlice";
+import { getAllSkills } from "./store/slices/skillSlice";
+import { getAllSoftwareApplications } from "./store/slices/softwareApplicationSlice";
+import { getAllProjects } from "./store/slices/projectSlice";
 
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUser());
+    dispatch(getAllSkills());
+    dispatch(getAllMessages());
+    dispatch(getAllTimeline());
+    dispatch(getAllProjects());
+    dispatch(getAllSoftwareApplications());
   }, []);
   return (
     <DashboardProvider>

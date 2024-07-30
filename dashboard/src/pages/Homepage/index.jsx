@@ -40,7 +40,7 @@ const HomePage = () => {
         return <AddProject />;
       case "Add Skill":
         return <AddSkill />;
-      case "Add Uses":
+      case "Add Application":
         return <AddSoftwareApplications />;
       case "Add Timeline":
         return <AddTimeline />;

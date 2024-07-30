@@ -87,17 +87,17 @@ const PortfolioSidebar = ({ active, setActive, handleLogout }) => {
             <TooltipTrigger asChild>
               <Link
                 className={`flex h-9 w-9 items-center justify-center rounded-lg ${
-                  active === "Add Uses"
+                  active === "Add Application"
                     ? "text-accent-foreground bg-accent"
                     : "text-muted-foreground"
                 }  transition-colors hover:text-foreground md:h-8 md:w-8`}
-                onClick={() => setActive("Add Uses")}
+                onClick={() => setActive("Add Application")}
               >
                 <LayoutGrid className="h-5 w-5" />
-                <span className="sr-only">Add Uses</span>
+                <span className="sr-only">Add Application</span>
               </Link>
             </TooltipTrigger>
-            <TooltipContent side="right">Add Uses</TooltipContent>
+            <TooltipContent side="right">Add Application</TooltipContent>
           </Tooltip>
         </TooltipProvider>
         <TooltipProvider>

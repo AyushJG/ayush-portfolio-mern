@@ -49,13 +49,13 @@ const forgotResetPassSlice = createSlice({
 export const forgotPassword = (email) => async (dispatch) => {
   try {
     dispatch(forgotResetPassSlice.actions.forgotPasswordRequest());
-    console.log(email);
+
     const response = await axios.post(
       "http://localhost:4000/api/v1/user/password/forgot",
       { email },
       { withCredentials: true, headers: { "Content-Type": "application/json" } }
     );
-    console.log(response);
+
     dispatch(
       forgotResetPassSlice.actions.forgotPasswordSuccess(response.data.message)
     );
@@ -81,7 +81,7 @@ export const resetPassword =
           headers: { "Content-Type": "application/json" },
         }
       );
-      console.log(response);
+
       dispatch(
         forgotResetPassSlice.actions.resetPasswordSuccess(response.data.message)
       );

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const useStatesAndActions = () => {
-  const [active, setActive] = useState("");
+  const [active, setActive] = useState("Dashboard");
 
   const state = {
     active,
