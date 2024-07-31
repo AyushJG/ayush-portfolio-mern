@@ -17,9 +17,12 @@ const Hero = () => {
   const [user, setUser] = useState({});
   useEffect(() => {
     const getMyProfile = async () => {
-      const { data } = await axios.get("http://localhost:4000/api/v1/user/me", {
-        withCredentials: true,
-      });
+      const { data } = await axios.get(
+        "https://ayush-portfolio-mern-backend.onrender.com/api/v1/user/me",
+        {
+          withCredentials: true,
+        }
+      );
       setUser(data.user);
     };
     getMyProfile();

@@ -49,9 +49,12 @@ const UpdateProject = () => {
   useEffect(() => {
     const getProject = async () => {
       await axios
-        .get(`http://localhost:4000/api/v1/project/get/${id}`, {
-          withCredentials: true,
-        })
+        .get(
+          `https://ayush-portfolio-mern-backend.onrender.com/api/v1/project/get/${id}`,
+          {
+            withCredentials: true,
+          }
+        )
         .then((res) => {
           setTitle(res.data.project.title);
           setDescription(res.data.project.description);
