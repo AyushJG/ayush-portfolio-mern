@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { clearAllUserErrors, login } from "@/store/slices/userSlice";
 import { toast } from "react-toastify";
-import SpecialLoadingButton from "../components/SpecialLoadingButton";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -69,16 +68,13 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            {loading ? (
-              <SpecialLoadingButton content={"Loggin In"} />
-            ) : (
-              <Button
-                onClick={() => handleLogin(email, password)}
-                className="w-full"
-              >
-                Login
-              </Button>
-            )}
+
+            <Button
+              onClick={() => handleLogin(email, password)}
+              className="w-full"
+            >
+              Login
+            </Button>
           </div>
         </div>
       </div>
