@@ -18,7 +18,7 @@ const Hero = () => {
   useEffect(() => {
     const getMyProfile = async () => {
       const { data } = await axios.get(
-        "https://ayush-portfolio-mern-backend.onrender.com/api/v1/user/me",
+        "https://ayush-portfolio-mern.onrender.com/api/v1/user/me",
         {
           withCredentials: true,
         }

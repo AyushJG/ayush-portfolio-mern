@@ -21,7 +21,7 @@ const ViewProject = () => {
     const getProject = async () => {
       await axios
         .get(
-          `https://ayush-portfolio-mern-backend.onrender.com/api/v1/project/get/${id}`,
+          `https://ayush-portfolio-mern.onrender.com/api/v1/project/get/${id}`,
           {
             withCredentials: true,
           }
