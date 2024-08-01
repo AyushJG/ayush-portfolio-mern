@@ -74,7 +74,7 @@ export const getAllSoftwareApplications = () => async (dispatch) => {
   );
   try {
     const response = await axios.get(
-      "https://ayush-portfolio-mern.onrender.com/api/v1/softwareapplication/getall",
+      `${import.meta.env.VITE_DOMAIN_URL}/api/v1/softwareapplication/getall`,
       { withCredentials: true }
     );
 
@@ -101,7 +101,7 @@ export const addNewSoftwareApplication = (data) => async (dispatch) => {
   );
   try {
     const response = await axios.post(
-      "https://ayush-portfolio-mern.onrender.com/api/v1/softwareapplication/add",
+      `${import.meta.env.VITE_DOMAIN_URL}/api/v1/softwareapplication/add`,
       data,
       {
         withCredentials: true,
@@ -129,7 +129,9 @@ export const deleteSoftwareApplication = (id) => async (dispatch) => {
   );
   try {
     const response = await axios.delete(
-      `https://ayush-portfolio-mern.onrender.com/api/v1/softwareapplication/delete/${id}`,
+      `${
+        import.meta.env.VITE_DOMAIN_URL
+      }/api/v1/softwareapplication/delete/${id}`,
       {
         withCredentials: true,
       }

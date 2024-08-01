@@ -1,4 +1,6 @@
 backend/node_modules
 portfolio/node_modules
+portfolio/.env
 dashboard/node_modules
+dashboard/.env
 backend/config

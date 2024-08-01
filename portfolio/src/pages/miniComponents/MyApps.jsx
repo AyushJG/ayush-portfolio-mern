@@ -7,10 +7,10 @@ const MyApps = () => {
   useEffect(() => {
     const getMyApps = async () => {
       const { data } = await axios.get(
-        "https://ayush-portfolio-mern.onrender.com/api/v1/softwareapplication/getall",
+        `${import.meta.env.VITE_DOMAIN_URL}/api/v1/softwareapplication/getall`,
         { withCredentials: true }
       );
-      setApps(data.softwareApplications);
+      setApps(data.softwareApplication);
     };
     getMyApps();
   }, []);
@@ -34,7 +34,7 @@ const MyApps = () => {
           apps.map((element) => {
             return (
               <Card
-                className="h-fit p-7 flex flex-col justify-center items-center gap-3"
+                className="h-fit p-4 flex flex-col justify-center items-center gap-3"
                 key={element._id}
               >
                 <img

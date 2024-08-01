@@ -49,12 +49,9 @@ const UpdateProject = () => {
   useEffect(() => {
     const getProject = async () => {
       await axios
-        .get(
-          `https://ayush-portfolio-mern.onrender.com/api/v1/project/get/${id}`,
-          {
-            withCredentials: true,
-          }
-        )
+        .get(`${import.meta.env.VITE_DOMAIN_URL}/api/v1/project/get/${id}`, {
+          withCredentials: true,
+        })
         .then((res) => {
           setTitle(res.data.project.title);
           setDescription(res.data.project.description);

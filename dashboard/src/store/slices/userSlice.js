@@ -113,7 +113,7 @@ export const login = (email, password) => async (dispatch) => {
   dispatch(userSlice.actions.loginRequest());
   try {
     const { data } = await axios.post(
-      "https://ayush-portfolio-mern.onrender.com/api/v1/user/login",
+      `${import.meta.env.VITE_DOMAIN_URL}/api/v1/user/login`,
       { email, password },
       { withCredentials: true, headers: { "Content-Type": "application/json" } }
     );
@@ -128,7 +128,7 @@ export const getUser = () => async (dispatch) => {
   dispatch(userSlice.actions.loadUserRequest());
   try {
     const { data } = await axios.get(
-      "https://ayush-portfolio-mern.onrender.com/api/v1/user/me",
+      `${import.meta.env.VITE_DOMAIN_URL}/api/v1/user/me`,
       {
         withCredentials: true,
       }
@@ -143,7 +143,7 @@ export const getUser = () => async (dispatch) => {
 export const logout = () => async (dispatch) => {
   try {
     const { data } = await axios.get(
-      "https://ayush-portfolio-mern.onrender.com/api/v1/user/logout",
+      `${import.meta.env.VITE_DOMAIN_URL}/api/v1/user/logout`,
       { withCredentials: true }
     );
     dispatch(userSlice.actions.logoutSuccess(data.message));
@@ -158,7 +158,7 @@ export const updatePassword =
     dispatch(userSlice.actions.updatePasswordRequest());
     try {
       const { data } = await axios.put(
-        "https://ayush-portfolio-mern.onrender.com/api/v1/user/update/password",
+        `${import.meta.env.VITE_DOMAIN_URL}/api/v1/user/update/password`,
         { currentPassword, newPassword, confirmNewPassword },
         {
           withCredentials: true,
@@ -178,7 +178,7 @@ export const updateProfile = (data) => async (dispatch) => {
   dispatch(userSlice.actions.updateProfileRequest());
   try {
     const response = await axios.put(
-      "https://ayush-portfolio-mern.onrender.com/api/v1/user/update/me",
+      `${import.meta.env.VITE_DOMAIN_URL}/api/v1/user/update/me`,
       data,
       {
         withCredentials: true,

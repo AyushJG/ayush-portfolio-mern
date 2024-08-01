@@ -5,9 +5,8 @@ import {
   Instagram,
   Linkedin,
   Twitter,
-  Youtube,
 } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 import { Button } from "@/components/ui/button";
@@ -18,7 +17,7 @@ const Hero = () => {
   useEffect(() => {
     const getMyProfile = async () => {
       const { data } = await axios.get(
-        "https://ayush-portfolio-mern.onrender.com/api/v1/user/me",
+        `${import.meta.env.VITE_DOMAIN_URL}/api/v1/user/me`,
         {
           withCredentials: true,
         }

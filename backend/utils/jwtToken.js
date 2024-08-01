@@ -8,6 +8,8 @@ export const generateToken = (user, message, statusCode, res) => {
         Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000
       ),
       httpOnly: true,
+
+      // Uncomment these two key "secure" and "sameSite" for production
       secure: process.env.NODE_ENV === "production", // Secure cookie in production
       sameSite: "None", // Allow cross-origin requests
     })

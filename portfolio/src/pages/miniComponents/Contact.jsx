@@ -15,7 +15,7 @@ const Contact = () => {
     setLoading(true);
     await axios
       .post(
-        "https://ayush-portfolio-mern.onrender.com/api/v1/message/send",
+        `${import.meta.env.VITE_DOMAIN_URL}/api/v1/message/send`,
         { senderName, subject, message },
         {
           withCredentials: true,
