@@ -38,15 +38,17 @@ const Contact = () => {
     <div className="overflow-x-hidden">
       <div className="relative mb-8">
         <h1
-          className="flex gap-4 items-center text-[1.85rem] sm:text-[2.75rem] md:text-[3rem]
-            lg:text-[3rem] leading-[56px] md:leading-[67px] lg:leading-[90px]
-            tracking-[15px] mx-auto w-fit font-extrabold about-h1"
+          className="flex gap-4 items-center text-[1.5rem] sm:text-[2rem]
+    md:text-[2.25rem] lg:text-[2.5rem] leading-[40px] md:leading-[50px]
+    lg:leading-[80px] tracking-[15px] mx-auto w-fit font-extrabold about-h1"
           style={{
             background: "hsl(222.2 84% 4.9%)",
           }}
         >
-          CONTACT
-          <span className="text-tubeLight-effect font-extrabold">ME</span>
+          <span className="font-extrabold ml-5 bright-text-effect">
+            {" "}
+            Contact Me
+          </span>
         </h1>
         <span
           className="absolute w-full h-1 top-7 sm:top-7
@@ -57,6 +59,7 @@ const Contact = () => {
         <div className="flex flex-col gap-2 px-1.5">
           <Label className="text-xl">Your Name</Label>
           <Input
+            className="bg-slate-900"
             value={senderName}
             onChange={(e) => setSenderName(e.target.value)}
             placeholder="Your Name"
@@ -65,6 +68,7 @@ const Contact = () => {
         <div className="flex flex-col gap-2 px-1.5">
           <Label className="text-xl">Subject</Label>
           <Input
+            className="bg-slate-900"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
             placeholder="Subject"
@@ -73,6 +77,7 @@ const Contact = () => {
         <div className="flex flex-col gap-2 px-1.5">
           <Label className="text-xl">Message</Label>
           <Input
+            className="bg-slate-900"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Your Message"

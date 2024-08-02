@@ -5,6 +5,7 @@ import {
   DialogTrigger,
   DialogContent,
   DialogHeader,
+  DialogTitle,
 } from "@/components/ui/dialog";
 import axios from "axios";
 import { ExternalLink } from "lucide-react";
@@ -44,10 +45,10 @@ const Skills = () => {
         </h1>
         <span className="absolute w-full h-1 top-7 sm:top-7 md:top-8 lg:top-11 z-[-1] bg-slate-200"></span>
       </div>
-      <div className=" grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+      <div className=" grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 ">
         {skills.slice(0, 6).map((element) => (
           <Card
-            className="h-fit p-4 flex flex-col justify-center items-center gap-2"
+            className=" bg-slate-900 h-fit p-4 flex flex-col justify-center items-center gap-2 "
             key={element._id}
           >
             <img
@@ -75,18 +76,21 @@ const Skills = () => {
 
       {skills.length > 4 && (
         <Dialog open={isDialogOpen} onOpenChange={handleDialogToggle}>
-          <DialogContent className="w-11/12 max-w-6xl h-5/6">
+          <DialogContent className="max-w-full max-h-full h-full w-full">
+            <DialogHeader className="flex">
+              <DialogTitle>All Tools used for Dev</DialogTitle>
+            </DialogHeader>
             <div className="w-full h-full overflow-y-auto p-4">
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
                 {skills.map((element) => (
                   <Card
-                    className="h-fit p-4 flex flex-col justify-center items-center gap-2"
+                    className="  bg-slate-900 h-fit p-4 flex flex-col justify-center items-center gap-2"
                     key={element._id}
                   >
                     <img
                       src={element.svg && element.svg.url}
                       alt="skill"
-                      className="h-10 sm:h-20 w-auto"
+                      className="h-11 sm:h-20 w-auto"
                     />
                     <p className="text-muted-foreground text-center text-sm">
                       {element.title}

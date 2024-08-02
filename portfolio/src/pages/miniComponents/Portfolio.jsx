@@ -5,10 +5,19 @@ import { Card } from "@/components/ui/card";
 import { FaEye } from "react-icons/fa";
 import { Check, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const Portfolio = () => {
   const [projects, setProjects] = useState([]);
-
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const handleDialogToggle = () => {
+    setIsDialogOpen(!isDialogOpen);
+  };
   useEffect(() => {
     const getMyProjects = async () => {
       const { data } = await axios.get(
@@ -46,9 +55,9 @@ const Portfolio = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {projects.length > 0 ? (
-            projects.slice(0, 9).map((element) => (
+            projects.slice(0, 4).map((element) => (
               <Link to={`/project/${element._id}`} key={element._id}>
-                <Card className="relative h-72 flex flex-col justify-center items-center overflow-hidden group">
+                <Card className=" bg-slate-900 relative h-72 flex flex-col justify-center items-center overflow-hidden group">
                   <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <p className="text-white text-center text-lg mb-2">
                       {element.title}
@@ -80,7 +89,9 @@ const Portfolio = () => {
       </div>
       <div className=" self-center">
         <Button
-          onClick={() => {}}
+          onClick={() => {
+            handleDialogToggle();
+          }}
           className="rounded-[30px] flex items-center gap-2 flex-row"
         >
           <span>
@@ -89,6 +100,42 @@ const Portfolio = () => {
           <span>See All Project </span>
         </Button>
       </div>
+      <Dialog open={isDialogOpen} onOpenChange={handleDialogToggle}>
+        <DialogContent className="max-w-full max-h-full h-full w-full">
+          <DialogHeader className="flex">
+            <DialogTitle>All Project</DialogTitle>
+          </DialogHeader>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4 p-4">
+            {projects.map((element) => (
+              <Link to={`/project/${element._id}`} key={element._id}>
+                <Card className=" bg-slate-900 relative h-72 flex flex-col justify-center items-center overflow-hidden group">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <p className="text-white text-center text-lg mb-2">
+                      {element.title}
+                    </p>
+                    <FaEye className="text-white text-4xl" />
+                  </div>
+                  <div className="h-full w-full transition-filter duration-300">
+                    <img
+                      src={
+                        element.projectBanner?.url || "path/to/placeholder.jpg"
+                      }
+                      alt={element.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="text-muted-foreground text-center text-base mt-2 flex items-center justify-center">
+                      <span>Active: </span>
+                      <span className="ml-2 flex items-center justify-center">
+                        {getDeployedInfo(element)}
+                      </span>
+                    </div>
+                  </div>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        </DialogContent>
+      </Dialog>
     </>
   );
 };

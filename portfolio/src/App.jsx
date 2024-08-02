@@ -11,7 +11,8 @@ import "react-toastify/dist/ReactToastify.css";
 function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <ModeToggle />
+      {/* <ModeToggle /> */}
+
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
