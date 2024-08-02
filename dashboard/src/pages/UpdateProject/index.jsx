@@ -198,9 +198,12 @@ const UpdateProject = () => {
                       <SelectContent>
                         <SelectItem value="Full Stack">Full Stack</SelectItem>
                         <SelectItem value="Mern">MERN</SelectItem>
-                        <SelectItem value="Mean">MEAN</SelectItem>
+                        <SelectItem value="HTML, CSS, Javascript">
+                          HTML, CSS, Javascript
+                        </SelectItem>
                         <SelectItem value="Next.JS">NEXT.JS</SelectItem>
                         <SelectItem value="React.JS">REACT.JS</SelectItem>
+                        <SelectItem value="Wordpress">Wordpress</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>

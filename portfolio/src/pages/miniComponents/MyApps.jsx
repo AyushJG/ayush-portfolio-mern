@@ -18,14 +18,17 @@ const MyApps = () => {
     <div className="w-full flex flex-col gap-8 sm:gap-12">
       <div className="relative">
         <h1
-          className="flex gap-4 items-center text-[2rem] sm:text-[2.75rem]
-          md:text-[3rem] lg:text-[3.8rem] leading-[56px] md:leading-[67px]
-          lg:leading-[90px] tracking-[15px] mx-auto w-fit font-extrabold about-h1"
+          className="flex gap-4 items-center text-[1.5rem] sm:text-[2rem]
+    md:text-[2.25rem] lg:text-[2.5rem] leading-[40px] md:leading-[50px]
+    lg:leading-[80px] tracking-[15px] mx-auto w-fit font-extrabold about-h1"
           style={{
             background: "hsl(222.2 84% 4.9%)",
           }}
         >
-          MY <span className="font-extrabold">APPS</span>
+          <span className="font-extrabold ml-5 bright-text-effect">
+            {" "}
+            MY APPS
+          </span>
         </h1>
         <span className="absolute w-full h-1 top-7 sm:top-7 md:top-8 lg:top-11 z-[-1] bg-slate-200"></span>
       </div>
