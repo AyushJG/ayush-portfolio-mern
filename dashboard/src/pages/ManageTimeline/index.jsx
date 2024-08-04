@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -13,7 +13,7 @@ import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
-import { Trash2 } from "lucide-react";
+import { Pen, Trash2 } from "lucide-react";
 import {
   clearAllTimelineErrors,
   deleteTimeline,
@@ -88,7 +88,12 @@ const ManageTimeline = () => {
                               ? element?.timeline?.to
                               : "____"}
                           </TableCell>
-                          <TableCell className="flex justify-end">
+                          <TableCell className="flex justify-end gap-2">
+                            <Link to={`/update/timeline/${element._id}`}>
+                              <button className="border-yellow-400 border-2 rounded-full h-8 w-8 flex justify-center items-center text-yellow-400  hover:text-slate-950 hover:bg-yellow-400">
+                                <Pen className="h-5 w-5" />
+                              </button>
+                            </Link>
                             <button
                               className="border-red-600 border-2 rounded-full h-8 w-8 flex
                               justify-center items-center text-red-600  hover:text-slate-50 hover:bg-red-600"

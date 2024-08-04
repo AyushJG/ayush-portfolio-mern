@@ -9,9 +9,9 @@ export const generateToken = (user, message, statusCode, res) => {
       ),
       httpOnly: true,
 
-      // Uncomment these two key "secure" and "sameSite" for production
-      secure: process.env.NODE_ENV === "production", // Secure cookie in production
-      sameSite: "None", // Allow cross-origin requests
+      // // Uncomment these two key "secure" and "sameSite" for production
+      // secure: process.env.NODE_ENV === "production", // Secure cookie in production
+      // sameSite: "None", // Allow cross-origin requests
     })
     .json({
       success: true,

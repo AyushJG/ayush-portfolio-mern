@@ -3,7 +3,7 @@ const Footer = () => {
     <footer className="p-5 mt-6 w-full max-w-[1200px] mx-auto ">
       <hr className="w-full border-t-2 border-gray-300 " />
       <div className="flex flex-col md:flex-row justify-between items-center mt-5">
-        <h1 className="  text-gray-500 text-3xl tracking-[8px] capitalize ">
+        <h1 className="  text-gray-500 text-3xl tracking-[8px] capitalize text-center ">
           AYUSH TIMALSINA
         </h1>
         <div className="text-right">

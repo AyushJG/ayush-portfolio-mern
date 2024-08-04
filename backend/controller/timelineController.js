@@ -15,6 +15,31 @@ export const postTimeline = catchAsyncErrors(async (req, res, next) => {
     newTimeline,
   });
 });
+export const updateTimeline = catchAsyncErrors(async (req, res, next) => {
+  const newTimelineData = {
+    title: req.body.title,
+    description: req.body.description,
+    timeline: {
+      from: req.body.from,
+      to: req.body.to,
+    },
+  };
+
+  const updatedTimeline = await Timeline.findByIdAndUpdate(
+    req.params.id,
+    newTimelineData,
+    {
+      new: true,
+      runValidators: true,
+      useFindAndModify: false,
+    }
+  );
+  res.status(200).json({
+    success: true,
+    message: "timeline Updated!",
+    updatedTimeline,
+  });
+});
 
 export const deleteTimeline = catchAsyncErrors(async (req, res, next) => {
   const { id } = req.params;
@@ -35,4 +60,18 @@ export const getAllTimelines = catchAsyncErrors(async (req, res, next) => {
     success: true,
     timelines,
   });
+});
+export const getSingleTimeline = catchAsyncErrors(async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const timeline = await Timeline.findById(id);
+    res.status(200).json({
+      success: true,
+      timeline,
+    });
+  } catch (error) {
+    res.status(400).json({
+      error,
+    });
+  }
 });

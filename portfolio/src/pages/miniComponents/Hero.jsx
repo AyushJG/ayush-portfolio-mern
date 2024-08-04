@@ -26,7 +26,6 @@ const Hero = () => {
     };
     getMyProfile();
   }, []);
-  console.log({ user });
   return (
     <div className="w-full">
       <div className="flex items-center gap-2 mb-2">

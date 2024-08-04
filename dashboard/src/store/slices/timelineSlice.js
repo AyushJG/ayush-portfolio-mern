@@ -55,6 +55,21 @@ const timelineSlice = createSlice({
       state.loading = false;
       state.message = null;
     },
+    updateTimelineRequest(state, action) {
+      state.loading = true;
+      state.error = null;
+      state.message = null;
+    },
+    updateTimelineSuccess(state, action) {
+      state.loading = false;
+      state.message = action.payload;
+      state.error = null;
+    },
+    updateTimelineFailed(state, action) {
+      state.error = action.payload;
+      state.loading = false;
+      state.message = null;
+    },
     resetTimelineSlice(state, action) {
       state.error = null;
       state.timeline = state.timeline;
@@ -126,7 +141,28 @@ export const deleteTimeline = (id) => async (dispatch) => {
     );
   }
 };
-
+export const updateTimeline = (id, newData) => async (dispatch) => {
+  dispatch(timelineSlice.actions.updateTimelineRequest());
+  try {
+    const response = await axios.put(
+      `${import.meta.env.VITE_DOMAIN_URL}/api/v1/timeline/update/${id}`,
+      newData,
+      {
+        withCredentials: true,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+    dispatch(
+      timelineSlice.actions.updateTimelineSuccess(response.data.message)
+    );
+    dispatch(timelineSlice.actions.clearAllErrors());
+  } catch (error) {
+    console.log(error);
+    dispatch(
+      timelineSlice.actions.updateTimelineFailed(error.response.data.message)
+    );
+  }
+};
 export const resetTimelineSlice = () => (dispatch) => {
   dispatch(timelineSlice.actions.resetTimelineSlice());
 };

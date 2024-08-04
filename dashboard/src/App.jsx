@@ -20,6 +20,7 @@ import { getAllTimeline } from "./store/slices/timelineSlice";
 import { getAllSkills } from "./store/slices/skillSlice";
 import { getAllSoftwareApplications } from "./store/slices/softwareApplicationSlice";
 import { getAllProjects } from "./store/slices/projectSlice";
+import UpdateTimeline from "./pages/UpdateTimeline";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -41,6 +42,7 @@ const App = () => {
           <Route path="/password/reset/:token" element={<ResetPassword />} />
           <Route path="/manage/skills" element={<ManageSkills />} />
           <Route path="/manage/timeline" element={<ManageTimeline />} />
+          <Route path="/update/timeline/:id" element={<UpdateTimeline />} />
           <Route path="/manage/projects" element={<ManageProjects />} />
           <Route path="/view/project/:id" element={<ViewProject />} />
           <Route path="/update/project/:id" element={<UpdateProject />} />
