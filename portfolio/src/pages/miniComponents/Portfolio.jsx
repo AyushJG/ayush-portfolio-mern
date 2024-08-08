@@ -12,7 +12,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
-const Portfolio = () => {
+const Portfolio = ({ setLoading }) => {
   const [projects, setProjects] = useState([]);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const handleDialogToggle = () => {
@@ -25,6 +25,7 @@ const Portfolio = () => {
         { withCredentials: true }
       );
       setProjects(data.projects);
+      setLoading(true);
     };
     getMyProjects();
   }, []);
